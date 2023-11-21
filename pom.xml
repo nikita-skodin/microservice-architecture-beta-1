@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.skodin</groupId>
-	<artifactId>0</artifactId>
+	<artifactId>microservice-architecture-beta-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>base-1</name>
 	<description>base-1</description>
