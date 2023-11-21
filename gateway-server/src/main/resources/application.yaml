@@ -1,0 +1,35 @@
+server:
+  port: 8083
+
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        ssl:
+          useInsecureTrustManager: true
+      routes:
+        - id: bookstore
+          uri: http://localhost:8080
+          predicates:
+            - Path=/books/**
+
+        - id: registration
+          uri: http://localhost:8081
+          predicates:
+            - Path=/registration
+          filters:
+            - RewritePath=/registration, /auth
+
+        - id: token
+          uri: http://localhost:8081
+          predicates:
+            - Path=/login
+          filters:
+            - RewritePath=/login, /auth/token
+
+        - id: help
+          uri: https://spring.io/guides
+          predicates:
+            - Path=/help
+          filters:
+            - RedirectTo=302, https://spring.io/guides
